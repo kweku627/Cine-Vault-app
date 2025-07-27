@@ -1,0 +1,241 @@
+{
+  "info": {
+    "name": "CineVault API - Series & Episodes",
+    "description": "Complete API collection for testing Series and Episode management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "seriesId",
+      "value": "1399",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Series Management",
+      "item": [
+        {
+          "name": "Get All Series",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/series",
+              "host": ["{{baseUrl}}"],
+              "path": ["series"]
+            }
+          }
+        },
+        {
+          "name": "Get Series by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/series/{{seriesId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "{{seriesId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create New Series",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"seriesId\": 1399,\n  \"title\": \"Game of Thrones\",\n  \"overview\": \"Nine noble families fight for control over the lands of Westeros...\",\n  \"releaseDate\": \"2011-04-17\",\n  \"posterPath\": \"/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg\",\n  \"backdropPath\": \"/suopoADq0k8YZr4dQXcU6pToj6s.jpg\",\n  \"originalLanguage\": \"en\",\n  \"voteAverage\": 9.3,\n  \"voteCount\": 19423,\n  \"popularity\": 1000.0,\n  \"videoUrl\": \"http://example.com/got-trailer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/series",
+              "host": ["{{baseUrl}}"],
+              "path": ["series"]
+            }
+          }
+        },
+        {
+          "name": "Update Series",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"seriesId\": 1399,\n  \"title\": \"Game of Thrones (Updated)\",\n  \"overview\": \"Nine noble families fight for control over the lands of Westeros...\",\n  \"releaseDate\": \"2011-04-17\",\n  \"posterPath\": \"/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg\",\n  \"backdropPath\": \"/suopoADq0k8YZr4dQXcU6pToj6s.jpg\",\n  \"originalLanguage\": \"en\",\n  \"voteAverage\": 9.3,\n  \"voteCount\": 19423,\n  \"popularity\": 1000.0,\n  \"videoUrl\": \"http://example.com/got-trailer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/series/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Series",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/series/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Episode Management",
+      "item": [
+        {
+          "name": "Get All Episodes for Series",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/series/{{seriesId}}/episodes",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "{{seriesId}}", "episodes"]
+            }
+          }
+        },
+        {
+          "name": "Get Episodes by Season",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/series/{{seriesId}}/episodes/season/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "{{seriesId}}", "episodes", "season", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Specific Episode",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/series/{{seriesId}}/episodes/1/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "{{seriesId}}", "episodes", "1", "1"]
+            }
+          }
+        },
+        {
+          "name": "Add Episode to Series",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"seasonNumber\": 1,\n  \"episodeNumber\": 1,\n  \"title\": \"Winter Is Coming\",\n  \"overview\": \"Lord Stark is torn between his family and an old friend...\",\n  \"releaseDate\": \"2011-04-17\",\n  \"videoUrl\": \"http://example.com/got-s1e1\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/series/{{seriesId}}/episodes",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "{{seriesId}}", "episodes"]
+            }
+          }
+        },
+        {
+          "name": "Add Second Episode",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"seasonNumber\": 1,\n  \"episodeNumber\": 2,\n  \"title\": \"The Kingsroad\",\n  \"overview\": \"While Bran recovers from his fall...\",\n  \"releaseDate\": \"2011-04-24\",\n  \"videoUrl\": \"http://example.com/got-s1e2\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/series/{{seriesId}}/episodes",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "{{seriesId}}", "episodes"]
+            }
+          }
+        },
+        {
+          "name": "Add Season 2 Episode",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"seasonNumber\": 2,\n  \"episodeNumber\": 1,\n  \"title\": \"The North Remembers\",\n  \"overview\": \"Tyrion arrives at King's Landing...\",\n  \"releaseDate\": \"2012-04-01\",\n  \"videoUrl\": \"http://example.com/got-s2e1\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/series/{{seriesId}}/episodes",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "{{seriesId}}", "episodes"]
+            }
+          }
+        },
+        {
+          "name": "Update Episode",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"seasonNumber\": 1,\n  \"episodeNumber\": 1,\n  \"title\": \"Winter Is Coming (Extended)\",\n  \"overview\": \"Lord Stark is torn between his family and an old friend. Extended version with additional scenes...\",\n  \"releaseDate\": \"2011-04-17\",\n  \"videoUrl\": \"http://example.com/got-s1e1-extended\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/series/{{seriesId}}/episodes/1/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "{{seriesId}}", "episodes", "1", "1"]
+            }
+          }
+        },
+        {
+          "name": "Remove Episode",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/series/{{seriesId}}/episodes/1/2",
+              "host": ["{{baseUrl}}"],
+              "path": ["series", "{{seriesId}}", "episodes", "1", "2"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+} 
